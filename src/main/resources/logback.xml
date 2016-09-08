@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+	<!-- Define the default standard out appender for outputing logs. -->
+	<!-- <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">  -->
+	<appender name="STDOUT" class="org.twgogo.jimwayne.logback.ext.DynamoDbAppender">
+		<encoder class="org.twgogo.jimwayne.logback.ext.GsonEncoder" />
+		<Region></Region>
+		<table></table>
+		<accessKey></accessKey>
+		<secretKey></secretKey>
+		<PartitionKey>iso_date</PartitionKey>
+		<PartitionKey>thread</PartitionKey>
+		<RangeKey>epoch_time</RangeKey>
+	</appender>
+
+	<!-- Set the default logging level to "ALL" level for loggers which are 
+		not specified. -->
+	<root level="ALL">
+		<appender-ref ref="STDOUT" />
+	</root>
+</configuration>
